@@ -1,0 +1,85 @@
+body{
+    background-color: #30314d;
+    color: #fff;
+    font-family: 'Karla', sans-serif;
+    text-align: center;
+}
+
+
+#level-title{
+    /* color: #FEF2BF; */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    margin: 5% 0 13%;
+}
+
+
+.container{
+    display: inline;
+    margin: auto; 
+    width: 50%;
+}
+
+
+.btn{
+    border: 3px solid black;
+    border-radius: 10%;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+}
+
+
+.game-over{
+    background-color: red;
+    opacity: 0.8;
+}
+
+
+.rosy{
+    /* background-color: #df4c45; */
+    background-color: #ee9af6 ;
+}
+
+
+.green{
+    /* background-color: #3f9169; */
+    background-color: #eef28a ;
+}
+
+
+.blueberry{
+    /* background-color: #27acf1; */
+    background-color: #9af6e4  ;
+}
+
+
+.yellow{
+    /* background-color: #d6b955; */
+    background-color: #9aa7f6  ;
+}
+
+
+.pressed{
+    background-color: grey;
+    box-shadow: 0 0 20px white;
+}
+
+
+/* Styling links */
+  a:link, a:visited{
+    color: #eef28a;
+    text-decoration: none;
+}
+  
+a:hover, a:active, a:focus{
+    color: #eef28a;
+    cursor: pointer;
+}
+
+
+
+/* Styling the footer <p> */
+.p-footer{
+    margin: 6px 0 6px;
+}
