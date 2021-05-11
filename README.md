@@ -3,7 +3,9 @@ Simon game from 1978 redesigned in JS! - https://shuncio.github.io/Simon-Game/
 
 The rules are simple - once you've started the game, you have to come after flashing boxes via selecting all of them in a chronological order every time when the level growes up.
 
+
 Licensed under the GPLv3 terms, 100 % free software.
+
 
 
 The legal notes about the favicon I used (which was generated using the graphic from Twitter Twemoji):
