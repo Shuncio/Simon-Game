@@ -5,7 +5,7 @@ let userClickedPattern = [];
 
 
 let started = false;
-    // etap gry, na jakim jest gracz
+    // current level stage shown on the screen
 let level = 0;
 
 
