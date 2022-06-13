@@ -1,161 +1,138 @@
 let gamePattern = [];
-    // array which magazines all clicked buttons in a chronological order
+
+    // array which magazines all clicked btns in a chronological order
 let userClickedPattern = [];
 
-
-
 let started = false;
+    
     // current level stage shown on the screen
 let level = 0;
 
-
-
-    // starts the whole game via any keyboard button click
-$(document).keydown(function() {
-
-    if (!started) {
-            // shows current stage of the game
-        $("#level-title").text("Level " + level);
-
-            // calls a function that plays the proper sound when the button is clicked*/
-        nextSequence();
-
-            // blocks EVERY next executing of this handler
-        started = true;
-  }
-
-});
-
-
-
-    // starts the whole game via clicking/touching a colored button
-$(".btn").click(function() {
-
-        // what will happen when the button got clicked/touched before game start
-    if(!started) {
-        
-        // shows current stage of the game
-        $("#level-title").text("Level " + level);
-    
-            // calls a function that plays the proper sound when the button is clicked */
-        nextSequence();
-    
-            // blocks EVERY next executing of this handler
-        started = true;
-        
-    }else{
-            // stores the 'id' of clicked button
-        let userChosenColor = $(this).attr("id");
-
-            // putting into every array's magazine all clicked buttons
-        userClickedPattern.push(userChosenColor);
-
-
-            // playing the proper sound when the button is clicked
-        playSound(userChosenColor);
-
-            // making the button's border animation when button is clicked
-        animatePress(userChosenColor);
-
-        checkAnswer(userClickedPattern.length-1);
-
-    }
-
-});
-
-
-
-function checkAnswer(currentLevel) {
-
-    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
-        
-        if (userClickedPattern.length === gamePattern.length) {
-            setTimeout(function () {
-                nextSequence();
-            }, 1000);
-
-      }
-    
-    }else {
-
-        playSound("wrong");
-        $("body").addClass("game-over");
-        $("#level-title").text("Game Over, Press Any Key to Restart");
-
-        setTimeout(function () {
-            $("body").removeClass("game-over");
-        }, 200);
-
-        startOver();
-    
-    }
-
+    // plays the proper sound when any btn got pressed (btns' color = sound's color)
+let playSound = (name) => {
+    let audio = new Audio(`sounds/${name}.mp3`);
+    audio.play();
 }
 
-
-
-    /* playing the proper sound when clicking on a button */
-function nextSequence() {
-
+    // playing the proper sound when clicking on a btn
+let nextSequence = () => {
     userClickedPattern = [];
         
-        // increasing the current Level Stage each time when the user click next correct button
+        // increasing the current Level Stage each time when the user click next correct btn
     level++;
 
-        // when the clicked button is correct - then Level is going to be next (1, 2, 3 etc.)
-    $("#level-title").text("Level " + level);
+        // when the clicked btn is correct, then Level is increasing (1, 2, 3 etc.)
+    $('#level-title').text(`Level ${level}`);
 
-        // array containing the buttons' colors
-    let buttonColors = ["rosy", "blueberry", "green", "yellow"];
+        // array containing btns names
+    let btnsColors = ['brownish', 'peachy', 'turquoise', 'yellowish'];
 
         // creating a random number between 0 and 3
     let randomNumber = Math.floor(Math.random() * 4);
 
-        // randomizizng all 4 buttons' colors instead of just numbers
-    let randomChosenColor = buttonColors[randomNumber];
+        // randomizes all 4 btns instead of just numbers
+    let randomChosenColor = btnsColors[randomNumber];
 
     gamePattern.push(randomChosenColor);
 
-        // making random button flash animation when the page is newly opened
-    $("#" + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
+        // makes random btn flash animation during f5-ing or opening the page
+    $('#' + randomChosenColor).fadeIn(100).fadeOut(100).fadeIn(100);
 
-        // playing random sound equal to the randomized button
+        // plays random sound equal which's name's equal to the btn's color
     playSound(randomChosenColor);
-
 }
 
+    // starts the whole game via any keyboard btn click
+$(document).keydown(function() {
+    if (!started) {
+            // shows current level of the game
+        $('#level-title').text(`Level ${level}`);
 
+            // calls a function that plays the proper sound when the btn's clicked
+        nextSequence();
 
-    // animation played when the button got clicked
-function animatePress(currentColor) {
+            // blocks every next executing of this handler
+        started = true;
+    }
+});
 
+    // checks if the clicked btn was the good one or not
+let checkAnswer = (currentLevel) => {
+        // if clicked btn was correct
+    if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(function () {
+                nextSequence();
+            }, 1000);
+      }
+        // if clicked btn was incorrect
+    } else {
+        playSound('wrong');
+        $('body').addClass('game-over');
+        $('#level-title').text('Game over, press any key to restart');
+
+        setTimeout(function () {
+            $('body').removeClass('game-over');
+        }, 200);
+
+        startOver();
+    }
+}
+
+    // animation played when a btn got clicked
+let animatePress = (currentColor) => {
         // small border animation
-    $("#" + currentColor).addClass("pressed");
+    $('#' + currentColor).addClass('pressed');
     
         // setting the period of the animation to 0.1s
     setTimeout(function () {
-        $("#" + currentColor).removeClass("pressed");
+        $('#' + currentColor).removeClass('pressed');
     }, 100);
-
 }
 
+    // starts the whole game via clicking/touching a btn
+$('.btn').click(function() {
+        // what'll happen when the btn got clicked/touched before game start
+    if (!started) {
+        
+            // shows current stage of the game
+        $('#level-title').text(`Level ${level}`);
+    
+            // calls a function that plays the proper sound when the btn is clicked */
+        nextSequence();
+    
+            // blocks EVERY next executing of this handler
+        started = true;
+    } else {
+            // stores the 'id' of a clicked btn
+        let userChosenColor = $(this).attr('id');
 
+            // puts all clicked btns into every array's magazine
+        userClickedPattern.push(userChosenColor);
 
-    // playing the sound when ANY button got pressed (button's color = sound's color)
-function playSound(name) {
+            // plays the proper sound when the btn's clicked
+        playSound(userChosenColor);
 
-    let audio = new Audio("sounds/" + name + ".mp3");
+            // making the btn's border animation when btn's clicked
+        animatePress(userChosenColor);
 
-    audio.play();
+        checkAnswer(userClickedPattern.length-1);
+    }
+});
 
-}
-
-
-
-function startOver() {
-
+let startOver = () => {
     level = 0;
     gamePattern = [];
     started = false;
-
 }
+
+
+
+    // creates the new Date object
+let currentDate = new Date();                       
+
+    // gets access to the current year
+let currentYear = currentDate.getFullYear();    
+
+    // outputs the current year in the footer flex container
+document.querySelector('.curr-year').textContent = currentYear;   
