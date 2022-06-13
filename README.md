@@ -4,10 +4,6 @@ Simon game from 1978 redesigned in JS! - https://shuncio.github.io/Simon-Game/
 The rules are simple - once you've started the game, you have to come after flashing boxes via selecting all of them in a chronological order every time when the level growes up.
 
 
-TODO:
-1. Transition from that ugly media queries part of the CSS code into a modern way of styling elements – Flexbox.
-
-
 Licensed under the GPLv3 terms, 100 % free software.
 
 
