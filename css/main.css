@@ -5,68 +5,56 @@ body{
     text-align: center;
 }
 
-
+/* top header */
 #level-title{
-    /* color: #FEF2BF; */
     font-family: 'Press Start 2P', cursive;
     font-size: 2rem;
-    margin: 5% 0 13%;
+    margin: 8vh 0 0;
 }
 
-
+/* flex btns' container */
 .container{
-    display: inline;
-    margin: auto; 
-    width: 50%;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    height: 75vh;
+    justify-content: center;
 }
-
 
 .btn{
-    border: 3px solid black;
     border-radius: 10%;
-    display: inline-block;
-    height: 200px;
-    width: 200px;
+    height: 175px;
+    width: 175px;
 }
 
-
-.game-over{
-    background-color: red;
-    opacity: 0.8;
+.turquoise{
+    background-color: #55CBCD;
 }
 
-
-.rosy{
-    /* background-color: #df4c45; */
-    background-color: #ee9af6 ;
+.brownish{
+    background-color: #CBAACB;
 }
 
-
-.green{
-    /* background-color: #3f9169; */
-    background-color: #eef28a ;
+.yellowish{
+    background-color: #F6EAC2;
 }
 
-
-.blueberry{
-    /* background-color: #27acf1; */
-    background-color: #9af6e4  ;
+.peachy{
+    background-color: #FF96BA;
 }
 
-
-.yellow{
-    /* background-color: #d6b955; */
-    background-color: #9aa7f6  ;
-}
-
-
+/* btns' pressing animation */
 .pressed{
     background-color: grey;
     box-shadow: 0 0 20px white;
 }
 
+/* footer's <p> */
+.p-footer{
+    margin: 4px 0 0;
+}
 
-/* Styling links */
+/* links */
   a:link, a:visited{
     color: #eef28a;
     text-decoration: none;
@@ -77,9 +65,19 @@ a:hover, a:active, a:focus{
     cursor: pointer;
 }
 
+.game-over{
+    background-color: red;
+    opacity: 0.8;
+}
 
-
-/* Styling the footer <p> */
-.p-footer{
-    margin: 6px 0 6px;
+/* decreases font and btns size on mobiles */
+@media (max-width: 600px) {
+    #level-title{ 
+        font-size: 1.4rem;
+    }
+    
+    .btn{
+        height: 125px;
+        width: 125px;
+    }
 }
